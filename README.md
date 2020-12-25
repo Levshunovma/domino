@@ -1,1 +1,1 @@
-# domino
+# Domino project for Cloud Technologies university course
