@@ -8,7 +8,8 @@ public class StrategyHelper {
 
     static {
         strategies = new ArrayList<>();
-        strategies.add(new TakeRandomOne());
+        strategies.add(new PutRandomOne());
+        strategies.add(new PutMostPopulatedOne());
     }
 
     public static List<AIStrategy> getStrategies() {

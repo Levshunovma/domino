@@ -53,7 +53,7 @@ public class Hand {
 
     public List<Turn> getPossibleTurns() {
         return dominoes.stream()
-            .filter(domino -> domino.getFirstNumber() == domino.getSecondNumber() && domino.getFirstNumber() != 0)
+            .filter(domino -> domino.getFirstNumber().equals(domino.getSecondNumber()) && domino.getFirstNumber() != 0)
             .sorted(Comparator.comparing(Domino::getFirstNumber))
             .map(domino -> new Turn(domino, Side.FIRST_TURN))
             .collect(Collectors.toList());

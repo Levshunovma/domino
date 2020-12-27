@@ -5,19 +5,19 @@ import java.util.*;
 public class Domino {
     public static final int PRINTED_DOMINO_LENGTH = 5;
 
-    private int firstNumber;
-    private int secondNumber;
+    private Integer firstNumber;
+    private Integer secondNumber;
 
     public Domino(int firstNumber, int secondNumber) {
         this.firstNumber = firstNumber;
         this.secondNumber = secondNumber;
     }
 
-    public int getFirstNumber() {
+    public Integer getFirstNumber() {
         return firstNumber;
     }
 
-    public int getSecondNumber() {
+    public Integer getSecondNumber() {
         return secondNumber;
     }
 
@@ -35,13 +35,17 @@ public class Domino {
         return Arrays.asList(firstNumber, secondNumber);
     }
 
+    public boolean isDouble() {
+        return firstNumber.equals(secondNumber);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Domino domino = (Domino) o;
-        return firstNumber == domino.firstNumber && secondNumber == domino.secondNumber
-            || firstNumber == domino.secondNumber && secondNumber == domino.firstNumber;
+        return firstNumber.equals(domino.firstNumber) && secondNumber.equals(domino.secondNumber)
+            || firstNumber.equals(domino.secondNumber) && secondNumber.equals(domino.firstNumber);
     }
 
     @Override

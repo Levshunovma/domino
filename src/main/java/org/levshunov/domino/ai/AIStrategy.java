@@ -9,5 +9,5 @@ import java.util.List;
 // It's expected that there's at least one possible turn
 public interface AIStrategy {
     String uiName();
-    Turn makeTurn(Field field, Hand myHand, Hand opponentHand, List<Turn> possibleTurns);
+    Turn makeTurn(List<Turn> possibleTurns, Field field, Hand myHand, Integer opponentHandCount);
 }

@@ -6,14 +6,14 @@ import org.levshunov.domino.model.Turn;
 
 import java.util.List;
 
-public class TakeRandomOne implements AIStrategy {
+public class PutRandomOne implements AIStrategy {
     @Override
     public String uiName() {
-        return "Возьми первую доступную";
+        return "Положи первую доступную";
     }
 
     @Override
-    public Turn makeTurn(Field field, Hand myHand, Hand opponentHand, List<Turn> possibleTurns) {
+    public Turn makeTurn(List<Turn> possibleTurns, Field field, Hand myHand, Integer opponentHandCount) {
         return possibleTurns.get(0);
     }
 }

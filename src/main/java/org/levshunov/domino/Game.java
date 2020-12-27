@@ -64,15 +64,16 @@ public class Game {
                 } else {
                     aiPossibleTurns = aiPlayer.getPossibleTurns(-whoGoesFirst);
                 }
-                Turn aiTurn = aiStrategy.makeTurn(Field.EMPTY_FIELD, aiPlayer, humanPlayer, aiPossibleTurns);
+                Turn aiTurn = aiStrategy.makeTurn(aiPossibleTurns, Field.EMPTY_FIELD, aiPlayer,
+                    humanPlayer.getDominoesCount());
                 applyTurn(aiTurn, aiPlayer);
             }
         } else {
             pickUpDominoes(aiPlayer);
             if (hasPossibleTurn(aiPlayer)) {
-                Turn aiTurn = aiStrategy.makeTurn(field, aiPlayer, humanPlayer, aiPlayer.getPossibleTurns(field));
+                Turn aiTurn = aiStrategy.makeTurn(aiPlayer.getPossibleTurns(field), field, aiPlayer,
+                    humanPlayer.getDominoesCount());
                 applyTurn(aiTurn, aiPlayer);
-                lastTurn = aiTurn;
             } else if (lastTurn == null) {
                 throw new EndGameException();
             } else {
@@ -112,6 +113,7 @@ public class Game {
         } else if (Side.RIGHT.equals(turn.getSide())) {
             field.addRight(turn.getDomino());
         }
+        lastTurn = turn;
         hand.playDomino(turn.getDomino());
         if (hand.getDominoesCount() == 0) {
             throw new EndGameException();
